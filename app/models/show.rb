@@ -1,4 +1,6 @@
 class Show < ApplicationRecord
+  has_one_attached :poster
+
   belongs_to :club
   has_many :bookings, dependent: :destroy
   has_many :show_comedians, dependent: :destroy
