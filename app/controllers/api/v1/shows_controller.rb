@@ -17,6 +17,12 @@ class Api::V1::ShowsController < Api::V1::BaseController
   end
 
   def show
+    @club = @show.club
+    @audiences = @show.users
+    @comedians = []
+    @show.show_comedians.each do |sc|
+      @comedians.unshift(sc.user)
+    end
   end
 
   def create

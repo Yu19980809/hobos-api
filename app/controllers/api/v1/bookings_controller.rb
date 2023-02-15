@@ -18,7 +18,7 @@ class Api::V1::BookingsController < Api::V1::BaseController
   end
 
   def destroy
-    booking = Booking.find(params[:id])
+    booking = Booking.where(show_id: params[:id], user: @current_user).first
     if booking.destroy
       render json: { message: 'success' }
     else
